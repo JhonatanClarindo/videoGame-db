@@ -18,6 +18,8 @@ import { SearchBarComponent } from './components/search-bar/search-bar.component
 import { HomeComponent } from './components/home/home.component';
 import { HttpHeadersInterceptor } from './interceptor/http-headers.interceptor';
 import { HttpErrorInterceptor } from './interceptor/http-errors.interceptor';
+import { DetailsComponent } from './components/details/details.component';
+import { GameTabsComponent } from './components/game-tabs/game-tabs.component';
 
 
 
@@ -26,7 +28,9 @@ import { HttpErrorInterceptor } from './interceptor/http-errors.interceptor';
   declarations: [
     AppComponent,
     SearchBarComponent,
-    HomeComponent
+    HomeComponent,
+    DetailsComponent,
+    GameTabsComponent
   ],
   imports: [
     BrowserModule,

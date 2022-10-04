@@ -9,7 +9,6 @@ import { APIResponse, Game } from '../models';
   providedIn: 'root'
 })
 export class HttpService {
-
   constructor(private http: HttpClient) { }
 
 
@@ -27,6 +26,29 @@ export class HttpService {
     return this.http.get<APIResponse<Game>>(`${env.BASE_URL}/games`, {
       params: params, 
     })
+  }
+
+  getGameDetails(id: string): Observable<Game> {
+    const gameInfoRequest = this.http.get(`${env.BASE_URL}/games/${id}`);
+    const gameTrailerRequest = this.http.get(
+      `${env.BASE_URL}/games/${id}/movies`
+    );
+    const gameScreenshotsRequest = this.http.get(
+      `${env.BASE_URL}/games/${id}/screenshots`
+    )
+    return forkJoin({
+      gameInfoRequest,
+      gameScreenshotsRequest,
+      gameTrailerRequest
+    }).pipe(
+      map((resp: any)=>{
+        return {
+          ...resp['gameInfoRequest'],
+          screenshots: resp['gameScreenShotsRequest']?.results,
+          trailers: resp['gameTrailersRequest']?.results
+        }
+      })
+    );
   }
 }
 
