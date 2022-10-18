@@ -14,6 +14,6 @@
 
 <br />
 
-## All project resources consume the API RAWG Video Games Database disponible in rapidapi.com  
+## All project resources consume the API 'RAWG Video Games Database', which are available in rapidapi.com  
 
 
